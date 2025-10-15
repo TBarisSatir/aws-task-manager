@@ -2,7 +2,7 @@
 
 body {
   margin: 0;
-  background-color: #fdf9f5;
+  background-color: #fdfbf9;
   font-family: 'Inter', sans-serif;
   color: #333;
 }
@@ -29,8 +29,8 @@ body {
 
 .logo-icon {
   margin-right: 8px;
-  width: 35px;  
-  height: 35px; 
+  width: 24px;
+  height: 24px;
 }
 
 .header-stats {
@@ -104,8 +104,36 @@ h1 {
 
 .todo-item {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  margin-bottom: 12px;
+  padding-right: 30px; 
+}
+
+.task-content {
+  display: flex;
   align-items: center;
-  margin-bottom: 16px;
+}
+
+.todo-item label {
+  font-size: 16px;
+  color: #333;
+}
+
+.todo-item.completed label {
+  text-decoration: line-through;
+  color: #b0a8a1;
+}
+
+.task-description {
+  font-size: 14px;
+  color: #888;
+  margin-left: 30px; 
+  margin-top: 4px;
+  margin-bottom: 0;
+  padding-bottom: 4px;
+  white-space: pre-wrap; 
 }
 
 .todo-item input[type='checkbox'] {
@@ -119,6 +147,7 @@ h1 {
   cursor: pointer;
   position: relative;
   background-color: #fff;
+  flex-shrink: 0;
 }
 
 .todo-item input[type='checkbox']:checked {
@@ -136,16 +165,6 @@ h1 {
   transform: translate(-50%, -50%);
 }
 
-.todo-item label {
-  font-size: 16px;
-  color: #333;
-}
-
-.todo-item.completed label {
-  text-decoration: line-through;
-  color: #b0a8a1;
-}
-
 .add-task-form-container {
   padding: 20px;
   border: 1px solid #f0e9e4;
@@ -155,32 +174,52 @@ h1 {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-.input-wrapper {
-  display: flex;
-  align-items: center;
-  margin-bottom: 8px;
-}
-
 .add-task-input {
-  flex-grow: 1;
+  width: 100%;
   padding: 10px 12px;
   font-size: 16px;
-  border: 1px solid #f97316;
+  border: 1px solid #ddd;
   border-radius: 8px;
   outline: none;
-  margin-right: 12px;
   font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
 }
 
 .add-task-input:focus {
+  border-color: #f97316;
   box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2);
+}
+
+.add-description-input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  margin-top: 12px;
+  font-family: 'Inter', sans-serif;
+  resize: vertical;
+  min-height: 60px;
+  box-sizing: border-box;
+}
+
+.add-description-input:focus {
+  border-color: #f97316;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2);
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
 }
 
 .add-button {
   padding: 10px 24px;
   border: none;
   border-radius: 8px;
-  background: linear-gradient(to right, #ff984e, #ff731c, #ff6200de);
+  background: linear-gradient(to right, #fec8a1, #f9a06a);
   color: white;
   font-size: 16px;
   font-weight: 500;
@@ -190,6 +229,7 @@ h1 {
 
 .add-button:disabled {
   opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .cancel-button {
@@ -199,9 +239,13 @@ h1 {
   cursor: pointer;
   padding: 4px;
   font-size: 14px;
+  margin-left: 12px;
 }
 
 .delete-button {
+  position: absolute;
+  top: -4px;
+  right: 0;
   background: none;
   border: none;
   color: #ccac99;
@@ -210,15 +254,14 @@ h1 {
   line-height: 1;
   cursor: pointer;
   padding: 0 8px;
-  opacity: 0; 
+  opacity: 0;
   transition: opacity 0.2s ease-in-out;
 }
 
 .todo-item:hover .delete-button {
-  opacity: 1; 
+  opacity: 1;
 }
 
 .delete-button:hover {
-  color: #ef5350; 
+  color: #ef5350;
 }
- 
