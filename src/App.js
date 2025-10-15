@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./App.css";
+import "./TaskManager.css";
 import logo from "./components/logo.png";
 
 // placehodler tasks. will be removed after setting up backend on aws
